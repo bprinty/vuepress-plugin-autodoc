@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Mocha Package Testing</title>
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+
+</head>
+<body>
+    <div id="mocha"></div>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script>
+        mocha.ui('bdd');
+        mocha.reporter('html');
+        var assert = chai.assert;
+    </script>
+
+    <!--
+    TODO: NEED TO FIGURE OUT HOW TO USE THIS STATIC PAGE WITHOUT COMPILING
+          TEST FILES. SHOULD BE ABLE TO USE HTTP-SERVER OR SOMETHING ELSE.
+          THIS REPORT CAN BE USEFUL FOR EITHER TESTING OR QUICKLY SEEING
+          THE STATUS OF TESTS WITHOUT RUNNING JEST.
+
+    <script src="../dist/index.min.js"></script>
+    <script src="index.test.js" type="module" crossorigin="anonymous"></script>
+    -->
+
+    <script>
+      describe("foo", function () {
+        it("foo tests should pass", function () {
+          assert.equal(1, 1);
+        });
+        it("foobar tests should fail", function () {
+          assert.equal(1, 2);
+        });
+      });
+      describe("bar", function () {
+        it("bar tests should pass", function () {
+          assert.equal(1, 1);
+        });
+        it("barbaz tests should pass", function () {
+          assert.equal(1, 1);
+        });
+      });
+    </script>
+
+    <script>
+        if (window.mochaPhantomJS) {
+            mochaPhantomJS.run();
+        } else {
+            mocha.run();
+        }
+    </script>
+</body>
+</html>
