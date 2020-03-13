@@ -5,73 +5,73 @@
 
 // imports
 // -------
-import Vue from 'vue';
-import Vuex from 'vuex';
 import { assert } from 'chai';
-import server from './server';
-import { Reflect } from '../src/index';
-import { Profile } from './models/models';
+import MarkdownIt from 'markdown-it';
+import { autodoc } from '../src/index.js';
+
+
+// api
+// ---
+/**
+ * Number class.
+ */
+export class Number {
+ /**
+  * Create a new number
+  * @param {Number} number - Input number.
+  */
+  constructor(number) {
+    this.number = number || 0;
+  }
+
+  /**
+   * Get the value for the number.
+   * @return {Number} The number value.
+   */
+   value() {
+     return this.number;
+   }
+}
+
+/**
+ * Example add function.
+ * @param {Number} x - First number to add.
+ * @param {Number} y - Second number to add.
+ * @return {Number} Result of operation.
+ */
+export function add(x, y) {
+  return x + y;
+}
+
+/**
+ * Example object placeholder with arguments.
+ */
+const utils = {
+  /**
+   * Echo value.
+   * @param {String} value - Value to echo.
+   */
+   echo: value => console.log(value),
+}
 
 
 // config
 // ------
-jest.mock('axios');
-server.init();
-beforeEach(() => {
-  server.reset();
-});
-
-
-// plugin setup
-// ------------
-Vue.use(Vuex);
-const store = new Vuex.Store({
-  state: {
-    ping: null,
-  },
-  mutations: {
-    ping(state) {
-      state.ping = 'pong';
-    },
-  },
-  actions: {
-    ping(context) {
-      return new Promise((resolve) => {
-        resolve('pong');
-      });
-    },
-  },
-  plugins: [Reflect({
-    Profile,
-    options: {
-      axios: {
-        baseUrl: '/missing',
-      },
-    }
-  })],
-});
+console.log(MarkdownIt().use);
+const md = MarkdownIt().use(autodoc);
 
 
 // tests
 // -----
-describe("config", () => {
+describe("render", () => {
 
-  test("config.constructs", () => {
-    assert.equal(store.state.ping, null);
-    store.commit('ping');
-    assert.equal(store.state.ping, 'pong');
-    store.dispatch('ping').then((data) => {
-      assert.equal(data, 'pong');
-    });
+  test("render.module", () => {
+    console.log(md.render('/autodoc tests/index.test.js add Number'));
+    assert.isTrue(false);
   });
 
-  test("config.axios", async () => {
-    try {
-      await Profile.fetch();
-      assert.fail('Axios instance not overridden in requests.');
-    } catch (err) {
-      assert.equal(err.message, 'URL `/profile` not in API');
-    }
+  test("render.element", () => {
+    assert.isTrue(true);
   });
 
 });
