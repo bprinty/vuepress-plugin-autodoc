@@ -1,14 +1,22 @@
 {
-  "name": "axios-mock-models",
-  "homepage": "http://github.com/bprinty/axios-mock-models",
-  "repository": "http://github.com/bprinty/axios-mock-models",
-  "version": "0.1.0",
+  "name": "vuex-reflect",
+  "homepage": "http://bprinty.github.io/vuex-reflect",
+  "repository": "http://github.com/bprinty/vuex-reflect",
+  "version": "0.1.1",
   "authors": [
     "Blake Printy <bprinty@gmail.com> (http://bprinty.github.io)"
   ],
-  "description": "Mock REST Data Models with Axios",
+  "description": "Front-End Data Models with Vuex",
   "license": "Apache-2.0",
-  "keywords": [],
+  "keywords": [
+    "vuex",
+    "collection",
+    "model",
+    "vue",
+    "state",
+    "store",
+    "rest"
+  ],
   "ignore": [
     "**/.*",
     "node_modules",
@@ -17,44 +25,40 @@
     "package-lock.json"
   ],
   "scripts": {
+    "clean": "rm -rf node_modules dist",
     "build": "webpack",
     "build:dev": "webpack --mode=development",
     "lint": "eslint src --fix",
-    "test": "jest",
+    "test": "jest --config .jest.json",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --watch",
     "docs": "vuepress build docs",
-    "docs:api": "vuepress-jsdoc --source ./src/ --dist docs --folder api --title API --exclude *.test.js,exclude.js",
     "docs:dev": "vuepress dev docs",
-    "docs:deploy": "yarn docs && gsutil -m rsync -r docs/.vuepress/dist gs://atgtag/axios-mock-models",
+    "docs:deploy": "rm -rf docs/.vuepress/dist && vuepress build docs && cd docs/.vuepress/dist && git init && git add -A && git commit -m \"vuex-reflect, $npm_package_version\" && git push -f git@github.com:bprinty/vuex-reflect.git master:gh-pages",
     "readme": "vuepress dev",
-    "publish": "npm publish"
+    "release": "git tag -f $npm_package_version && git push -f origin $npm_package_version && yarn docs:deploy && yarn publish"
   },
   "main": [
     "dist/index.min.js"
   ],
   "dependencies": {
-    "axios": "^0.19.2",
-    "lodash": "^4.17.15",
-    "validator": "^12.2.0",
-    "vue": "^2.6.10",
-    "vuex": "^3.0.1"
+    "doxdox": "^3.0.0",
+    "jsdoc-api": "^5.0.4",
+    "jsdoc-parse": "^4.0.1",
+    "markdown-it": "^10.0.0",
+    "markdown-it-regexp": "^0.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
-    "@vuepress/theme-vue": "^1.3.0",
     "babel-jest": "^25.1.0",
+    "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.0",
     "jest": "^25.1.0",
-    "mermaid": "^8.4.7",
     "mocha": "^6.1.4",
-    "mocha-phantomjs": "^4.0.2",
-    "vuepress": "^1.2.0",
-    "vuepress-jsdoc": "^2.0.0",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.10"
   }
