@@ -1,3 +1,6 @@
 {
-  "collectCoverage": true
+  "collectCoverage": true,
+  "moduleNameMapper": {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+  }
 }
