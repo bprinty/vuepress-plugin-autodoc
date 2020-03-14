@@ -8,6 +8,10 @@ const path = require('path');
 // exports
 module.exports = (env, argv) => {
   return {
+    node: {
+      fs: 'empty',
+      child_process: 'empty',
+    },
     entry: [
       path.resolve(__dirname, 'src', 'index.js'),
     ],

@@ -1,21 +1,18 @@
 {
-  "name": "vuex-reflect",
-  "homepage": "http://bprinty.github.io/vuex-reflect",
-  "repository": "http://github.com/bprinty/vuex-reflect",
-  "version": "0.1.1",
+  "name": "vuepress-plugin-autodoc",
+  "homepage": "http://bprinty.github.io/vuepress-plugin-autodoc",
+  "repository": "http://github.com/bprinty/vuepress-plugin-autodoc",
+  "version": "0.1.0",
   "authors": [
     "Blake Printy <bprinty@gmail.com> (http://bprinty.github.io)"
   ],
-  "description": "Front-End Data Models with Vuex",
+  "description": "Automatic Code Documentation for VuePress",
   "license": "Apache-2.0",
   "keywords": [
-    "vuex",
-    "collection",
-    "model",
-    "vue",
-    "state",
-    "store",
-    "rest"
+    "vuepress",
+    "autodoc",
+    "api",
+    "jsdoc"
   ],
   "ignore": [
     "**/.*",
@@ -32,23 +29,19 @@
     "test": "jest --config .jest.json",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --watch",
-    "docs": "vuepress build docs",
-    "docs:dev": "vuepress dev docs",
-    "docs:deploy": "rm -rf docs/.vuepress/dist && vuepress build docs && cd docs/.vuepress/dist && git init && git add -A && git commit -m \"vuex-reflect, $npm_package_version\" && git push -f git@github.com:bprinty/vuex-reflect.git master:gh-pages",
-    "readme": "vuepress dev",
+    "docs": "vuepress build",
+    "docs:dev": "vuepress dev",
+    "docs:deploy": "rm -rf .vuepress/dist && vuepress build && cd .vuepress/dist && git init && git add -A && git commit -m \"vuepress-plugin-autodoc, $npm_package_version\" && git push -f git@github.com:bprinty/vuepress-plugin-autodoc.git master:gh-pages",
     "release": "git tag -f $npm_package_version && git push -f origin $npm_package_version && yarn docs:deploy && yarn publish"
   },
   "main": [
     "dist/index.min.js"
   ],
   "dependencies": {
-    "doxdox": "^3.0.0",
-    "jsdoc-api": "^5.0.4",
-    "jsdoc-parse": "^4.0.1",
-    "markdown-it": "^10.0.0",
-    "markdown-it-regexp": "^0.4.0"
+    "jsdoc-api": "^5.0.4"
   },
   "devDependencies": {
+    "markdown-it": "^10.0.0",
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
     "babel-jest": "^25.1.0",
@@ -60,6 +53,7 @@
     "jest": "^25.1.0",
     "mocha": "^6.1.4",
     "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "vuepress": "^1.2.0"
   }
 }
