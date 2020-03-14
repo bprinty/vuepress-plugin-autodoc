@@ -4,7 +4,7 @@
 
 
 // imports
-import jsdoc from 'jsdoc-api';
+import { execSync } from 'child_process';
 import Token from 'markdown-it/lib/token';
 import CSS from './index.css';
 
@@ -105,6 +105,12 @@ function html(data, nested) {
 }
 
 
+function explain(path) {
+  const proc = execSync(`jsdoc --explain ${path}`);
+  return JSON.parse(proc.toString());
+}
+
+
 /**
  * Read file with jsdoc and return data structure
  * for formatting results. This method will automatically
@@ -113,10 +119,7 @@ function html(data, nested) {
  * @param {String} path - Path to file.
  */
 function read(path) {
-  const data = jsdoc.explainSync({
-    files: [path],
-  }).filter(item => item.comment);
-
+  const data = explain(path).filter(item => item.comment);
   const parsed = {};
   data.map(item => {
 
@@ -162,12 +165,13 @@ function read(path) {
  * @param md - Markdown object to extend.
  * @param options - Options for plugin.
  */
-export function autodoc(md, options) {
+function autodoc(md, options) {
   options  = options || {};
   const cache = {};
   const regex = options.regex || /\/autodoc\s+(.+)$/;
   let css = options.css || CSS;
   css = `\n\n<style>\n${css}\n</style>\n\n`;
+  let documented = false;
 
   // add markdown-it rule for plugin
   md.core.ruler.push('autodoc', state => {
@@ -193,25 +197,28 @@ export function autodoc(md, options) {
         }
 
         // render html for doc
+        documented = true;
         token.content = modules.map(key => html(data[key])).join('\n');
         token.type = 'html_inline';
         token.children = null;
 
         // unwrap outer tokens
-        if (state.tokens[idx-1].type === 'paragraph_open') {
+        if (state.tokens[idx - 1].type === 'paragraph_open') {
           state.tokens[idx - 1].hidden = true;
         }
-        if (state.tokens[idx+1].type === 'paragraph_close') {
+        if (state.tokens[idx + 1].type === 'paragraph_close') {
           state.tokens[idx + 1].hidden = true;
         }
       }
     });
 
-    // add extra token for autodoc css
-    const style = new Token('html_inline', '', 0);
-    style.content = css;
-    style.children = null;
-    state.tokens.push(style);
+    // add extra to ken for autodoc css
+    if (documented) {
+      const style = new Token('html_inline', '', 0);
+      style.content = css;
+      style.children = null;
+      state.tokens.push(style);
+    }
   });
 }
 
