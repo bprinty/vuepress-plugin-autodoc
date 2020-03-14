@@ -12,7 +12,8 @@
     "vuepress",
     "autodoc",
     "api",
-    "jsdoc"
+    "jsdoc",
+    "documentation"
   ],
   "ignore": [
     "**/.*",
@@ -22,7 +23,7 @@
     "package-lock.json"
   ],
   "scripts": {
-    "clean": "rm -rf node_modules dist",
+    "clean": "rm -rf node_modules dist coverage",
     "build": "webpack",
     "build:dev": "webpack --mode=development",
     "lint": "eslint src --fix",
