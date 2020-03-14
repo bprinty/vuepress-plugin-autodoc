@@ -74,7 +74,8 @@ const utils = {
 
 // config
 // ------
-const md = MarkdownIt().use(autodoc);
+let css = fs.readFileSync(__dirname + '/../src/index.css', 'utf-8');
+const md = MarkdownIt().use(autodoc, { css });
 
 
 // tests

@@ -33,6 +33,13 @@ module.exports = (env, argv) => {
               presets: ['@babel/preset-env'],
             }
           },
+          {
+            test: /\.css$/i,
+            loader: 'css-loader',
+            options: {
+              import: true,
+            },
+          }
        ]
     }
   }

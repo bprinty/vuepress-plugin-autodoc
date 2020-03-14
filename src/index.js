@@ -5,12 +5,8 @@
 
 // imports
 import jsdoc from 'jsdoc-api';
-import fs from 'fs';
 import Token from 'markdown-it/lib/token';
-
-// read style for plugin (bundled with package)
-let CSS = fs.readFileSync(__dirname + '/index.css', 'utf-8');
-CSS = `\n\n<style>\n${CSS}\n</style>\n\n`;
+import CSS from './index.css';
 
 /**
  * Return badge class for specific object type.
@@ -168,8 +164,10 @@ function read(path) {
  */
 export function autodoc(md, options) {
   options  = options || {};
-  const regex = options.regex || /\/autodoc\s+(.+)$/;
   const cache = {};
+  const regex = options.regex || /\/autodoc\s+(.+)$/;
+  let css = options.css || CSS;
+  css = `\n\n<style>\n${css}\n</style>\n\n`;
 
   // add markdown-it rule for plugin
   md.core.ruler.push('autodoc', state => {
@@ -211,7 +209,7 @@ export function autodoc(md, options) {
 
     // add extra token for autodoc css
     const style = new Token('html_inline', '', 0);
-    style.content = CSS;
+    style.content = css;
     style.children = null;
     state.tokens.push(style);
   });
@@ -220,6 +218,7 @@ export function autodoc(md, options) {
 
 // exports
 export default function (options, ctx) {
+  options = options || {};
   return {
     name: 'vuepress-autodoc',
 
@@ -229,7 +228,7 @@ export default function (options, ctx) {
     // },
 
     extendMarkdown(md) {
-      return md.use(autodoc);
+      return md.use(autodoc, { css: options.css || CSS });
     },
   };
 };
