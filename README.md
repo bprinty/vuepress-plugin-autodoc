@@ -139,4 +139,4 @@ And here are all of the documented elements:
 
 ## Example
 
-See a demo of the documentation [here](https://bprinty.github.io/vuepress-plugin-autodoc).
+See a demo of the documentation [here](https://bprinty.github.io/vuepress-plugin-autodoc/#example).

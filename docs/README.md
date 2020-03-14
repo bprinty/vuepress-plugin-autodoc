@@ -120,7 +120,7 @@ const utils = {
 }
 ```
 
-We can render pre-formatted code documentation for specific items using the following markdown syntax:
+We can render pre-formatted code documentaton for specific items using the following markdown syntax:
 
 ```markdown
 // contents of docs/README.md
@@ -138,8 +138,6 @@ And here are all of the documented elements:
 ```
 
 ## Example
-
-See below for rendered autodoc documentation from the code examples above:
 
 <div class="autodoc">
 <h3 id="Number">
@@ -282,3 +280,4 @@ blockquote.scoped.tip {
 }
 
 </style>
+

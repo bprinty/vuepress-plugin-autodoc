@@ -131,7 +131,7 @@ describe("render", () => {
 
     // update readme to show rendered result
     let readme = fs.readFileSync(__dirname + '/../README.md', 'utf-8');
-    let idx = readme.indexOf('<div class="autodoc"');
+    let idx = readme.indexOf('See a demo of the documentation');
     idx = idx === -1 ? readme.length : idx;
     readme = readme.slice(0, idx);
     readme += result;
