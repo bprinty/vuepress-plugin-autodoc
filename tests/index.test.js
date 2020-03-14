@@ -130,12 +130,12 @@ describe("render", () => {
     assert.isTrue(result.includes('<style>'));
 
     // update readme to show rendered result
-    let readme = fs.readFileSync(__dirname + '/../README.md', 'utf-8');
-    let idx = readme.indexOf('<div class="autodoc"');
-    idx = idx === -1 ? readme.length : idx;
-    readme = readme.slice(0, idx);
-    readme += result;
-    fs.writeFileSync(__dirname + '/../README.md', readme, 'utf-8');
+    let demo = fs.readFileSync(__dirname + '/../demo.md', 'utf-8');
+    let idx = demo.indexOf('<div class="autodoc"');
+    idx = idx === -1 ? demo.length : idx;
+    demo = demo.slice(0, idx);
+    demo += result;
+    fs.writeFileSync(__dirname + '/../demo.md', demo, 'utf-8');
   });
 
 });
