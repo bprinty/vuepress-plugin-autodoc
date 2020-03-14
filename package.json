@@ -2,7 +2,7 @@
   "name": "vuepress-plugin-autodoc",
   "homepage": "http://bprinty.github.io/vuepress-plugin-autodoc",
   "repository": "http://github.com/bprinty/vuepress-plugin-autodoc",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "authors": [
     "Blake Printy <bprinty@gmail.com> (http://bprinty.github.io)"
   ],

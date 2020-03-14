@@ -217,18 +217,12 @@ export function autodoc(md, options) {
 
 
 // exports
-export default function (options, ctx) {
+export default (options, ctx) => {
   options = options || {};
   return {
     name: 'vuepress-autodoc',
-
-    // async ready() {
-    //   // write css for plugin
-    //   // await context.writeTemp('plugins-autodoc.css', style)
-    // },
-
-    extendMarkdown(md) {
-      return md.use(autodoc, { css: options.css || CSS });
+    extendMarkdown: (md) => {
+      md.use(autodoc, { css: options.css || CSS });
     },
   };
 };
