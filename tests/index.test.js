@@ -8,7 +8,7 @@
 import fs from 'fs';
 import { assert } from 'chai';
 import MarkdownIt from 'markdown-it';
-import { autodoc } from '../src/index.js';
+import plugin from '../src/index.js';
 
 
 // api
@@ -75,7 +75,9 @@ const utils = {
 // config
 // ------
 let css = fs.readFileSync(__dirname + '/../src/index.css', 'utf-8');
-const md = MarkdownIt().use(autodoc, { css });
+const extend = plugin({ css }).extendMarkdown;
+const md = MarkdownIt();
+extend(md);
 
 
 // tests
@@ -135,7 +137,7 @@ describe("render", () => {
     let idx = readme.indexOf('See a demo of the documentation');
     idx = idx === -1 ? readme.length : idx;
     readme = readme.slice(0, idx);
-    readme += result;
+    readme += '/autodoc tests/index.test.js\n';
     fs.writeFileSync(__dirname + '/../docs/README.md', readme, 'utf-8');
   });
 
