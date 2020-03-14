@@ -2,22 +2,20 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import babel from 'rollup-plugin-babel'
 import { string } from 'rollup-plugin-string'
-import { terser } from "rollup-plugin-terser";
 
 export default [
   {
     input: 'src/index.js',
     output: [
       {
-        file: 'dist/index.js',
+        file: 'dist/index.cjs.js',
         format: 'cjs',
         name: 'vuepress-plugin-autodoc',
       },
       {
-        file: 'dist/index.min.js',
-        format: 'cjs',
+        file: 'dist/index.esm.js',
+        format: 'esm',
         name: 'vuepress-plugin-autodoc',
-        plugins: [terser()],
       },
     ],
     plugins: [
