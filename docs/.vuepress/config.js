@@ -8,6 +8,7 @@ module.exports = {
     }
   },
   theme: '@vuepress/theme-vue',
+  plugins: [require('../../dist/index.min.js')],
   themeConfig: {
     repo: 'bprinty/vuepress-plugin/autodoc',
     docsDir: 'docs',
