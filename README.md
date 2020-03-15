@@ -137,6 +137,27 @@ And here are all of the documented elements:
 
 ```
 
+To show sidebar links for auto-documented items, place a header tag with the name of the item immediately before the `/autodoc` statement:
+
+```markdown
+# Classes
+
+## Number
+
+/autodoc src/index.js Number
+
+# Functions
+
+## add
+
+/autodoc src/index.js add
+
+## subtract
+
+/autodoc src/index.js subtract
+
+```
+
 ## Example
 
 See a demo of the documentation [here](https://bprinty.github.io/vuepress-plugin-autodoc/#example).
