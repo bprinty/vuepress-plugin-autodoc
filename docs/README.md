@@ -139,4 +139,15 @@ And here are all of the documented elements:
 
 ## Example
 
-/autodoc tests/index.test.js
+Here is an example of a class definition:
+
+/autodoc tests/index.test.js Number
+
+And here is an example of a function definition:
+
+/autodoc tests/index.test.js add
+
+And finally, a constatnt definition:
+
+/autodoc tests/index.test.js utils
+
