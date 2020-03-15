@@ -133,10 +133,13 @@ describe("render", () => {
     idx = idx === -1 ? readme.length : idx;
     readme = readme.slice(0, idx);
     readme += 'Here is an example of a class definition:\n\n'
+    readme += '### Number\n\n';
     readme += '/autodoc tests/index.test.js Number\n\n';
     readme += 'And here is an example of a function definition:\n\n'
+    readme += '### add\n\n';
     readme += '/autodoc tests/index.test.js add\n\n';
     readme += 'And finally, a constatnt definition:\n\n'
+    readme += '### utils\n\n';
     readme += '/autodoc tests/index.test.js utils\n\n';
     fs.writeFileSync(__dirname + '/../docs/README.md', readme, 'utf-8');
   });

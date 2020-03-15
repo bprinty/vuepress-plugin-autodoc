@@ -137,17 +137,44 @@ And here are all of the documented elements:
 
 ```
 
+To show sidebar links for auto-documented items, place a header tag with the name of the item immediately before the `/autodoc` statement:
+
+```markdown
+# Classes
+
+## Number
+
+/autodoc src/index.js Number
+
+# Functions
+
+## add
+
+/autodoc src/index.js add
+
+## subtract
+
+/autodoc src/index.js subtract
+
+```
+
 ## Example
 
 Here is an example of a class definition:
+
+### Number
 
 /autodoc tests/index.test.js Number
 
 And here is an example of a function definition:
 
+### add
+
 /autodoc tests/index.test.js add
 
 And finally, a constatnt definition:
+
+### utils
 
 /autodoc tests/index.test.js utils
 
