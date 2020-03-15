@@ -49,7 +49,6 @@ function html(data, nested) {
     }
     call += `)`;
   }
-  result.push('<div class="autodoc">');
 
   // header
   const htag = nested ? 'h4' : 'h3';
@@ -100,11 +99,15 @@ function html(data, nested) {
     });
   }
 
-  result.push('</div>');
   return result.join('\n');
 }
 
 
+/**
+ * Use jsdoc cli to parse specified files.
+ *
+ * @param path - Path to file.
+ */
 function explain(path) {
   const proc = execSync(`jsdoc --explain ${path}`);
   return JSON.parse(proc.toString());
@@ -200,9 +203,31 @@ function autodoc(md, options) {
         documented = true;
         token.content = modules.map(key => html(data[key])).join('\n');
         token.type = 'html_inline';
+        token.markdown = modules.join(', ');
         token.children = null;
 
-        // unwrap outer tokens
+        // hide adjacent header items (used for sidebar)
+        if ((idx - 4) >= 0) {
+          if (
+            (state.tokens[idx - 4].type === 'heading_open') &&
+            (state.tokens[idx - 3].type === 'inline') &&
+            (state.tokens[idx - 2].type === 'heading_close')
+          ) {
+            let hide = false;
+            state.tokens[idx - 3].children.forEach(token => {
+              if (modules.includes(token.content)) {
+                hide = true;
+              }
+            });
+            if (hide) {
+              state.tokens[idx - 3].children = [];
+              state.tokens[idx - 4].hidden = true;
+              state.tokens[idx - 2].hidden = true;
+            }
+          }
+        }
+
+        // hide outer paragraph tokens
         if (state.tokens[idx - 1].type === 'paragraph_open') {
           state.tokens[idx - 1].hidden = true;
         }
@@ -229,6 +254,7 @@ export default (options, ctx) => {
   return {
     name: 'vuepress-autodoc',
     extendMarkdown: (md) => {
+      md.set({ breaks: true });
       md.use(autodoc, { css: options.css || CSS });
     },
   };

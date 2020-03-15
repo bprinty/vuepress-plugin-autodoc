@@ -87,14 +87,12 @@ describe("render", () => {
 
   test("render.function", () => {
     result = md.render('/autodoc tests/index.test.js add');
-    assert.isTrue(result.includes('<div class="autodoc"'));
     assert.isTrue(result.includes('<h3 id="add"'));
     assert.isTrue(result.includes('<style>'));
   });
 
   test("render.const", () => {
     result = md.render('/autodoc tests/index.test.js utils');
-    assert.isTrue(result.includes('<div class="autodoc"'));
     assert.isTrue(result.includes('<h3 id="utils"'));
     assert.isTrue(result.includes('<h4 id="item"'));
     assert.isTrue(result.includes('<h4 id="echo"'));
@@ -103,7 +101,6 @@ describe("render", () => {
 
   test("render.class", () => {
     result = md.render('/autodoc tests/index.test.js Number');
-    assert.isTrue(result.includes('<div class="autodoc"'));
     assert.isTrue(result.includes('<h3 id="Number"'));
     assert.isTrue(result.includes('<h4 id="value"'));
     assert.isTrue(result.includes('<h4 id="increment"'));
@@ -112,7 +109,6 @@ describe("render", () => {
 
   test("render.multiple", () => {
     result = md.render('/autodoc tests/index.test.js add Number');
-    assert.isTrue(result.includes('<div class="autodoc"'));
     assert.isTrue(result.includes('<h3 id="Number"'));
     assert.isTrue(result.includes('<h4 id="value"'));
     assert.isTrue(result.includes('<h4 id="increment"'));
@@ -122,7 +118,6 @@ describe("render", () => {
 
   test("render.module", () => {
     result = md.render('/autodoc tests/index.test.js');
-    assert.isTrue(result.includes('<div class="autodoc"'));
     assert.isTrue(result.includes('<h3 id="Number"'));
     assert.isTrue(result.includes('<h4 id="value"'));
     assert.isTrue(result.includes('<h4 id="increment"'));
