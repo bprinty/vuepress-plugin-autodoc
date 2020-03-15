@@ -28,7 +28,7 @@
     "build:watch": "rollup -c --watch",
     "lint": "eslint src --fix",
     "test": "jest --config .jest.json",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --config .jest.json --watch",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand --watch",
     "docs": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
