@@ -14,7 +14,12 @@ import CSS from './index.css';
  * @param type - Object type to document.
  */
 function badgeClass(type) {
-  const data = { class: 'tip', function: 'error', const: 'warning', member: 'warning' };
+  const data = {
+    class: 'tip',
+    function: 'error',
+    const: 'warning',
+    member: 'warning',
+  };
   return (type in data) ? data[type] : 'tip';
 }
 
@@ -39,7 +44,7 @@ function formatParam(param) {
  */
 function html(data, nested) {
   nested = nested || false;
-  let result = [];
+  const result = [];
   let cls = badgeClass(data.type);
   let call = `${data.name}`;
   if (['class', 'function'].includes(data.type)) {
@@ -66,9 +71,9 @@ function html(data, nested) {
   // parameters
   if (data.params && data.params.length > 0) {
     result.push(`<blockquote>`);
-    result.push(`<p><strong>Parameters</strong></p>`)
+    result.push(`<p><strong>Parameters</strong></p>`);
     result.push(`<ul>`);
-    data.params.forEach(param => {
+    data.params.forEach((param) => {
       const parsed = formatParam(param);
       result.push(`<li>${parsed}</li>`);
     });
@@ -79,9 +84,9 @@ function html(data, nested) {
   // returns
   if (data.returns && data.returns.length > 0) {
     result.push(`<blockquote>`);
-    result.push(`<p><strong>Returns</strong></p>`)
+    result.push(`<p><strong>Returns</strong></p>`);
     result.push(`<ul>`);
-    data.returns.forEach(param => {
+    data.returns.forEach((param) => {
       const parsed = formatParam(param);
       result.push(`<li>${parsed}</li>`);
     });
@@ -124,8 +129,7 @@ function explain(path) {
 function read(path) {
   const data = explain(path).filter(item => item.comment);
   const parsed = {};
-  data.map(item => {
-
+  data.forEach((item) => {
     // construct data from item
     const obj = {
       name: item.name,
@@ -145,17 +149,15 @@ function read(path) {
       parsed[obj.name].params = item.params ? item.params : obj.params;
       parsed[obj.name].returns = item.returns ? item.returns : obj.returns;
       parsed[obj.name].description = obj.description ? obj.description : item.description;
-    }
 
-    else if (item.memberof in parsed) {
+    // handle nesting
+    } else if (item.memberof in parsed) {
       parsed[item.memberof].nested[obj.name] = obj;
-    }
 
     // save new base object
-    else {
+    } else {
       parsed[item.name] = obj;
     }
-
   });
 
   return parsed;
@@ -169,7 +171,7 @@ function read(path) {
  * @param options - Options for plugin.
  */
 function autodoc(md, options) {
-  options  = options || {};
+  options = options || {};
   const cache = {};
   const regex = options.regex || /\/autodoc\s+(.+)$/;
   let css = options.css || CSS;
@@ -177,15 +179,11 @@ function autodoc(md, options) {
   let documented = false;
 
   // add markdown-it rule for plugin
-  md.core.ruler.push('autodoc', state => {
-
-    let unwrap = [];
+  md.core.ruler.push('autodoc', (state) => {
     state.tokens.forEach((token, idx) => {
-
       // process inline tokens
       const match = token.content.match(regex);
       if (token.type === 'inline' && match) {
-
         let [path, ...modules] = match[1].trim().split(/[ ,;]/);
 
         // read data into cache
@@ -201,7 +199,12 @@ function autodoc(md, options) {
 
         // render html for doc
         documented = true;
-        token.content = modules.map(key => html(data[key])).join('\n');
+        token.content = modules.map((key) => {
+          if (!(key in data)) {
+            throw new Error(`Autodoc: could not find export \`${key}\` in file \`${path}\``);
+          }
+          return html(data[key]);
+        }).join('\n');
         token.type = 'html_inline';
         token.markdown = modules.join(', ');
         token.children = null;
@@ -209,13 +212,12 @@ function autodoc(md, options) {
         // hide adjacent header items (used for sidebar)
         if ((idx - 4) >= 0) {
           if (
-            (state.tokens[idx - 4].type === 'heading_open') &&
-            (state.tokens[idx - 3].type === 'inline') &&
-            (state.tokens[idx - 2].type === 'heading_close')
-          ) {
+            (state.tokens[idx - 4].type === 'heading_open')
+         && (state.tokens[idx - 3].type === 'inline')
+         && (state.tokens[idx - 2].type === 'heading_close')) {
             let hide = false;
-            state.tokens[idx - 3].children.forEach(token => {
-              if (modules.includes(token.content)) {
+            state.tokens[idx - 3].children.forEach(({ content }) => {
+              if (modules.includes(content)) {
                 hide = true;
               }
             });
@@ -249,7 +251,7 @@ function autodoc(md, options) {
 
 
 // exports
-export default (options, ctx) => {
+export default (options) => {
   options = options || {};
   return {
     name: 'vuepress-autodoc',
