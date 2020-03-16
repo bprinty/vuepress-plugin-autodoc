@@ -15,5 +15,7 @@
         "sourceType": "module"
     },
     "rules": {
+      "no-param-reassign": "off",
+      "quotes": "off"
     }
 }

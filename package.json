@@ -2,7 +2,7 @@
   "name": "vuepress-plugin-autodoc",
   "homepage": "http://bprinty.github.io/vuepress-plugin-autodoc",
   "repository": "http://github.com/bprinty/vuepress-plugin-autodoc",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "authors": [
     "Blake Printy <bprinty@gmail.com> (http://bprinty.github.io)"
   ],
@@ -38,6 +38,7 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "dependencies": {
+    "markdown-it": "^10.0.0",
     "jsdoc": "^3.6.3"
   },
   "devDependencies": {
@@ -54,7 +55,6 @@
     "eslint-plugin-import": "^2.18.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
-    "markdown-it": "^10.0.0",
     "mocha": "^6.1.4",
     "rollup": "^2.0.6",
     "rollup-plugin-babel": "^4.4.0",
