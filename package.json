@@ -33,7 +33,8 @@
     "docs": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
     "docs:deploy": "rm -rf docs/.vuepress/dist && vuepress build docs && cd docs/.vuepress/dist && git init && git add -A && git commit -m \"vuepress-plugin-autodoc, $npm_package_version\" && git push -f git@github.com:bprinty/vuepress-plugin-autodoc.git master:gh-pages",
-    "release": "git tag -f $npm_package_version && git push -f origin $npm_package_version && yarn docs:deploy && yarn publish"
+    "tag": "git tag -f $npm_package_version && git push -f origin $npm_package_version",
+    "release": "yarn build && yarn tag && yarn docs:deploy && yarn publish"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

@@ -57,8 +57,9 @@ function html(data, nested) {
 
   // header
   const htag = nested ? 'h4' : 'h3';
-  result.push(`<${htag} id="${data.name}">`);
-  result.push(` <a href="#${data.name}" class="header-anchor">#</a>`);
+  const anchor = data.name.toLowerCase();
+  result.push(`<${htag} id="${anchor}">`);
+  result.push(` <a href="#${anchor}" class="header-anchor">#</a>`);
   result.push(` <span class="badge ${cls}" style="vertical-align: top;">${data.type}</span>`);
   result.push(` <code>${call}</code>`);
   result.push(`</${htag}>`);
