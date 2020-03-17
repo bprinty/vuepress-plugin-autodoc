@@ -10,7 +10,7 @@ module.exports = {
   theme: '@vuepress/theme-vue',
   plugins: [require('../../dist/index.cjs.js')],
   themeConfig: {
-    repo: 'bprinty/vuepress-plugin/autodoc',
+    repo: 'bprinty/vuepress-plugin-autodoc',
     docsDir: 'docs',
     docsBranch: 'master',
     editLinks: true,
