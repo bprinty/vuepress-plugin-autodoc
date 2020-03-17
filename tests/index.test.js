@@ -8,7 +8,7 @@
 import fs from 'fs';
 import { assert } from 'chai';
 import MarkdownIt from 'markdown-it';
-import plugin from '../src/index.js';
+import plugin from '../src/index';
 
 
 // api
@@ -17,13 +17,12 @@ import plugin from '../src/index.js';
 * Generic number class
 */
 export class Number {
-
- /**
-  * Constructor for object.
-  * @param {Number} input - Number to add.
-  * @param {String} name - Name for number.
-  */
-  constructor(input) {
+  /**
+   * Constructor for object.
+   * @param {Number} input - Number to add.
+   * @param {String} name - Name for number.
+   */
+  constructor(input, name) {
     this.number = input || 0;
     this.name = name;
   }
@@ -32,18 +31,18 @@ export class Number {
    * Return number from class.
    * @return {Number} The number value.
    */
-   value() {
-     return this.number;
-   }
+  value() {
+    return this.number;
+  }
 
-   /**
-    * Add another number and return result.
-    * @param {Number} other - Other number to add.
-    * @return {Number} Other number to add.
-    */
-    increment(other) {
-      return this.number + other;
-    }
+  /**
+   * Add another number and return result.
+   * @param {Number} other - Other number to add.
+   * @return {Number} Other number to add.
+   */
+  increment(other) {
+    return this.number + other;
+  }
 }
 
 /**
@@ -62,19 +61,19 @@ const utils = {
   /**
    * Item in utils array.
    */
-   item: false,
+  item: false,
   /**
    * Echo value.
    *
    * @param {Number} value - Value to echo.
    */
-   echo: value => console.log(value),
-}
+  echo: value => value,
+};
 
 
 // config
 // ------
-let css = fs.readFileSync(__dirname + '/../src/index.css', 'utf-8');
+const css = fs.readFileSync(__dirname + '/../src/index.css', 'utf-8');
 const extend = plugin({ css }).extendMarkdown;
 const md = MarkdownIt();
 extend(md);
@@ -101,7 +100,7 @@ describe("render", () => {
 
   test("render.class", () => {
     result = md.render('/autodoc tests/index.test.js Number');
-    assert.isTrue(result.includes('<h3 id="Number"'));
+    assert.isTrue(result.includes('<h3 id="number"'));
     assert.isTrue(result.includes('<h4 id="value"'));
     assert.isTrue(result.includes('<h4 id="increment"'));
     assert.isTrue(result.includes('<style>'));
@@ -109,7 +108,7 @@ describe("render", () => {
 
   test("render.multiple", () => {
     result = md.render('/autodoc tests/index.test.js add Number');
-    assert.isTrue(result.includes('<h3 id="Number"'));
+    assert.isTrue(result.includes('<h3 id="number"'));
     assert.isTrue(result.includes('<h4 id="value"'));
     assert.isTrue(result.includes('<h4 id="increment"'));
     assert.isTrue(result.includes('<h3 id="add"'));
@@ -118,7 +117,7 @@ describe("render", () => {
 
   test("render.module", () => {
     result = md.render('/autodoc tests/index.test.js');
-    assert.isTrue(result.includes('<h3 id="Number"'));
+    assert.isTrue(result.includes('<h3 id="number"'));
     assert.isTrue(result.includes('<h4 id="value"'));
     assert.isTrue(result.includes('<h4 id="increment"'));
     assert.isTrue(result.includes('<h3 id="add"'));
@@ -143,5 +142,4 @@ describe("render", () => {
     readme += '/autodoc tests/index.test.js utils\n\n';
     fs.writeFileSync(__dirname + '/../docs/README.md', readme, 'utf-8');
   });
-
 });
