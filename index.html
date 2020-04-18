@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vuepress Autodoc Plugin | VuePress AutoDoc</title>
+    <meta name="description" content="Automatic code documentation for VuePress.">
+    <meta name="generator" content="VuePress 1.3.1">
+    
+    
+    <link rel="preload" href="/vuepress-plugin-autodoc/assets/css/0.styles.235c9aa1.css" as="style"><link rel="preload" href="/vuepress-plugin-autodoc/assets/js/app.34f6c961.js" as="script"><link rel="preload" href="/vuepress-plugin-autodoc/assets/js/2.c39e595a.js" as="script"><link rel="preload" href="/vuepress-plugin-autodoc/assets/js/5.18d0d2af.js" as="script"><link rel="prefetch" href="/vuepress-plugin-autodoc/assets/js/3.277bb46f.js"><link rel="prefetch" href="/vuepress-plugin-autodoc/assets/js/4.0b2c0058.js"><link rel="prefetch" href="/vuepress-plugin-autodoc/assets/js/6.ec18c24b.js">
+    <link rel="stylesheet" href="/vuepress-plugin-autodoc/assets/css/0.styles.235c9aa1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress-plugin-autodoc/" class="home-link router-link-exact-active router-link-active"><!----> <span class="site-name">VuePress AutoDoc</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/bprinty/vuepress-plugin-autodoc" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"> <a href="https://github.com/bprinty/vuepress-plugin-autodoc" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav> <div class="carbon-ads"></div> <ul class="sidebar-links"><li><a href="/vuepress-plugin-autodoc/" class="active sidebar-link">Vuepress Autodoc Plugin</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#overview" class="sidebar-link">Overview</a></li><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#installation" class="sidebar-link">Installation</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#install-in-project" class="sidebar-link">Install in Project</a></li></ul></li><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#quickstart" class="sidebar-link">Quickstart</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#configuration" class="sidebar-link">Configuration</a></li><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#referencing-code" class="sidebar-link">Referencing Code</a></li></ul></li><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#example" class="sidebar-link">Example</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#number" class="sidebar-link">Number</a></li><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#add" class="sidebar-link">add</a></li><li class="sidebar-sub-header"><a href="/vuepress-plugin-autodoc/#utils" class="sidebar-link">utils</a></li></ul></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vuepress-autodoc-plugin"><a href="#vuepress-autodoc-plugin" class="header-anchor">#</a> Vuepress Autodoc Plugin</h1> <h2 id="overview"><a href="#overview" class="header-anchor">#</a> Overview</h2> <p>VuePress plugin for automatic code documentation via <a href="https://jsdoc.app/" target="_blank" rel="noopener noreferrer">JSDoc<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> with an API similar to <a href="http://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html" target="_blank" rel="noopener noreferrer"><code>sphinx.ext.autodoc</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <h2 id="installation"><a href="#installation" class="header-anchor">#</a> Installation</h2> <h3 id="install-in-project"><a href="#install-in-project" class="header-anchor">#</a> Install in Project</h3> <p>To use this library in a Vue project, add the package to your package dependencies via:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> --save-dev vuepress-plugin-autodoc
+</code></pre></div><p>Or, with <a href="https://yarnpkg.com/" target="_blank" rel="noopener noreferrer">yarn<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> -D vuepress-plugin-autodoc
+</code></pre></div><h2 id="quickstart"><a href="#quickstart" class="header-anchor">#</a> Quickstart</h2> <h3 id="configuration"><a href="#configuration" class="header-anchor">#</a> Configuration</h3> <p>To use this in documentation for a project, follow the VuePress <a href="https://vuepress.vuejs.org/plugin/using-a-plugin.html#use-plugins-from-a-dependency" target="_blank" rel="noopener noreferrer">guidelines<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>. Here is a quick example:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'vuepress-plugin-autodoc'</span> <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="referencing-code"><a href="#referencing-code" class="header-anchor">#</a> Referencing Code</h3> <p>Once you've configured VuePress to use this plugin, you can automatically generate API documentation for code in your project using:</p> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token title important"><span class="token punctuation">#</span> API Section</span>
+
+<span class="token title important"><span class="token punctuation">##</span> Full Documentation</span>
+
+/autodoc src/index.js
+
+
+<span class="token title important"><span class="token punctuation">##</span> Document Specific Objects</span>
+
+/autodoc src/index.js myFunction MyClass myConst
+
+</code></pre></div><p>This will automatically render styled API documentation for code elements with JSDoc-compatible docstrings.</p> <p>This type of dynamic auto-documentation allows developers to be clear in how their API is structured, providing context alongside their API documentation. For example, let's say we have a file in our project that looks like:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// contents of src/index.js</span>
+
+<span class="token comment">/**
+* Generic number class
+*/</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">Number</span> <span class="token punctuation">{</span>
+
+ <span class="token comment">/**
+  * Constructor for object.
+  * @param {Number} input - Number to add.
+  * @param {String} name - Name for number.
+  */</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">input</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>number <span class="token operator">=</span> input <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/**
+   * Return number from class.
+   * @return {Number} The number value.
+   */</span>
+   <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>number<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+
+   <span class="token comment">/**
+    * Add another number and return result.
+    * @param {Number} other - Other number to add.
+    * @return {Number} Other number to add.
+    */</span>
+    <span class="token function">increment</span><span class="token punctuation">(</span><span class="token parameter">other</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>number <span class="token operator">+</span> other<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Function for adding two numbers.
+ * @param {Number} x - Left operand.
+ * @param {Number} y - Right operand.
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">/**
+ * Object with functions and data.
+ */</span>
+<span class="token keyword">const</span> utils <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">/**
+   * Item in utils array.
+   */</span>
+   item<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment">/**
+   * Echo value.
+   *
+   * @param {Number} value - Value to echo.
+   */</span>
+   <span class="token function-variable function">echo</span><span class="token operator">:</span> <span class="token parameter">value</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>We can render pre-formatted code documentaton for specific items using the following markdown syntax:</p> <div class="language-markdown extra-class"><pre class="language-markdown"><code>// contents of docs/README.md
+
+<span class="token title important"><span class="token punctuation">#</span> API Documentation</span>
+
+Here is documentation for specific elements from our module:
+
+/autodoc src/index.js add Number utils
+
+And here are all of the documented elements:
+
+/autodoc src/index.js
+
+</code></pre></div><p>To show sidebar links for auto-documented items, place a header tag with the name of the item immediately before the <code>/autodoc</code> statement:</p> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token title important"><span class="token punctuation">#</span> Classes</span>
+
+<span class="token title important"><span class="token punctuation">##</span> Number</span>
+
+/autodoc src/index.js Number
+
+<span class="token title important"><span class="token punctuation">#</span> Functions</span>
+
+<span class="token title important"><span class="token punctuation">##</span> add</span>
+
+/autodoc src/index.js add
+
+<span class="token title important"><span class="token punctuation">##</span> subtract</span>
+
+/autodoc src/index.js subtract
+
+</code></pre></div><h2 id="example"><a href="#example" class="header-anchor">#</a> Example</h2> <p>Here is an example of a class definition:</p> <h3 id="number"><a href="#number" class="header-anchor">#</a> <span class="badge tip" style="vertical-align:top;">class</span> <code>Number(input, name)</code></h3> <blockquote><p>Generic number class</p></blockquote> <blockquote><p><strong>Parameters</strong></p> <ul><li><code>input</code> (<em>Number</em>) - Number to add.</li> <li><code>name</code> (<em>String</em>) - Name for number.</li></ul></blockquote> <blockquote class="scoped error"><h4 id="value"><a href="#value" class="header-anchor">#</a> <span class="badge error" style="vertical-align:top;">function</span> <code>value()</code></h4> <blockquote><p>Return number from class.</p></blockquote> <blockquote><p><strong>Returns</strong></p> <ul><li> (<em>Number</em>) - The number value.</li></ul></blockquote></blockquote> <blockquote class="scoped error"><h4 id="increment"><a href="#increment" class="header-anchor">#</a> <span class="badge error" style="vertical-align:top;">function</span> <code>increment(other)</code></h4> <blockquote><p>Add another number and return result.</p></blockquote> <blockquote><p><strong>Parameters</strong></p> <ul><li><code>other</code> (<em>Number</em>) - Other number to add.</li></ul></blockquote> <blockquote><p><strong>Returns</strong></p> <ul><li> (<em>Number</em>) - Other number to add.</li></ul></blockquote></blockquote> <p>And here is an example of a function definition:</p> <h3 id="add"><a href="#add" class="header-anchor">#</a> <span class="badge error" style="vertical-align:top;">function</span> <code>add(x, y)</code></h3> <blockquote><p>Function for adding two numbers.</p></blockquote> <blockquote><p><strong>Parameters</strong></p> <ul><li><code>x</code> (<em>Number</em>) - Left operand.</li> <li><code>y</code> (<em>Number</em>) - Right operand.</li></ul></blockquote> <p>And finally, a constatnt definition:</p> <h3 id="utils"><a href="#utils" class="header-anchor">#</a> <span class="badge tip" style="vertical-align:top;">constant</span> <code>utils</code></h3> <blockquote><p>Object with functions and data.</p></blockquote> <blockquote class="scoped warning"><h4 id="item"><a href="#item" class="header-anchor">#</a> <span class="badge warning" style="vertical-align:top;">member</span> <code>item</code></h4> <blockquote><p>Item in utils array.</p></blockquote></blockquote> <blockquote class="scoped error"><h4 id="echo"><a href="#echo" class="header-anchor">#</a> <span class="badge error" style="vertical-align:top;">function</span> <code>echo(value)</code></h4> <blockquote><p>Echo value.</p></blockquote> <blockquote><p><strong>Parameters</strong></p> <ul><li><code>value</code> (<em>Number</em>) - Value to echo.</li></ul></blockquote></blockquote> <style>
+.badge {
+  display: inline-block;
+  font-size: 20px;
+  font-family: monospace;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 3px;
+  padding: 0 6px;
+  color: #fff;
+  background-color: #42b983;
+}
+.scoped .badge,
+blockquote .badge {
+  font-size: 15px;
+  height: 23px;
+  line-height: 23px;
+}
+.badge.warning {
+  background-color: #e7c000;
+}
+.badge.error {
+  background-color: #da5961;
+}
+.badge.tip {
+  background-color: #42b983;
+}
+blockquote.scoped.warning {
+  border-color: #e7c000;
+}
+blockquote.scoped.error {
+  border-color: #da5961;
+}
+blockquote.scoped.tip {
+  border-color: #42b983;
+}
+
+</style></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/bprinty/vuepress-plugin-autodoc/edit/master/docs/README.md" target="_blank" rel="noopener noreferrer">Edit this page on GitHub</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/15/2020, 4:06:53 PM</span></div></footer> <!----> <div class="bsa-cpc-wrapper"><div class="bsa-cpc"></div></div></main></div><div class="global-ui"></div></div>
+    <script src="/vuepress-plugin-autodoc/assets/js/app.34f6c961.js" defer></script><script src="/vuepress-plugin-autodoc/assets/js/2.c39e595a.js" defer></script><script src="/vuepress-plugin-autodoc/assets/js/5.18d0d2af.js" defer></script>
+  </body>
+</html>
