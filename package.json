@@ -39,7 +39,7 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "dependencies": {
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^12.3.2",
     "jsdoc": "^3.6.3"
   },
   "devDependencies": {
